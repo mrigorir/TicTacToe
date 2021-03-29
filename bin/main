@@ -1,3 +1,58 @@
 #!/usr/bin/env ruby
+def disply_board(array)
+  position = 0
+  while position < array.length
+    if (position % 3).zero?
+      print "\n"
+      print "---+---+---+\n"
+    end
+    print " #{array[position]} |"
+    position += 1
+  end
+  print "\n---+---+---+\n"
+  print "\n\n\n\n"
+end
 
-puts 'Hello World'
+def ask_input(player)
+  print "#{player}, choose a position from (0-8) to place in the board: "
+  val = gets.chomp
+  val
+end
+
+clear = `clear`
+board = %w[0 1 2 3 4 5 6 7 8]
+puts clear
+puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
+
+print 'Pseudo of Player 1: '
+player1 = gets.chomp
+print "\nWhich character do you want to use #{player1}?: "
+character1 = gets.chomp
+print clear
+
+print 'Pseudo of Player 2: '
+player2 = gets.chomp
+print "\nWhich character do you want to use #{player2}?: "
+character2 = gets.chomp
+puts clear
+
+print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
+disply_board(board)
+
+i = 0
+while i < (board.length / 2).to_i
+  locate = ask_input(player1) until locate =~ /[0-9]/
+  locate = gets.chomp.to_i
+  board[locate] = character1
+  disply_board(board)
+
+  print "#{player2}, choose a position from (0-8) to place in the board: "
+  locate = gets.chomp
+  locate = ask_input(player2) until locate =~ /[0-9]/
+  if locate =~ /[0-9]/
+    locate = gets.chomp.to_i
+    board[locate] = character2
+    disply_board(board)
+  end
+  i += 1
+end
