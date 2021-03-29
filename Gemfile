@@ -1,3 +1,8 @@
+require 'rubygems'
+require 'bundler/setup'
+Bundler.setup(:default, :ci)
+require 'nokogiri'
+
 source 'https://rubygems.org'
 gem 'multi_json'
 gem 'rack'
