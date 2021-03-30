@@ -17,35 +17,35 @@ def check_input(array, char, player, loc, usedd)
   while loc.is_a?(String)
     print "#{player}, choose a position from (0-8) to place in the board: "
     loc = gets.chomp
-    if loc =~ /[0-8]/ && loc.to_i.between?(0, 8) && loc.to_i < array.length
+    if loc.any?(/[0-8]/) && loc.to_i.between?(0, 8) && loc.to_i < array.length
       loc = loc.to_i
       array[loc] = char
       disply_board(array)
     elsif loc.to_i > array.length
       print "This number is too greater \n"
-      elsif loc.to_i.negative?
-        print "No negatvie numbers allowed \n"
+    elsif loc.to_i.negative?
+      print "No negatvie numbers allowed \n"
     end
   end
 end
 
-system("clear") || system("cls")
+system('clear') || system('cls')
 board = %w[0 1 2 3 4 5 6 7 8]
 used = []
-system("clear") || system("cls")
+system('clear') || system('cls')
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
 print 'Pseudo of Player 1: '
 player1 = gets.chomp
 print "\nWhich character do you want to use #{player1}?: "
 character1 = gets.chomp
-system("clear") || system("cls")
+system('clear') || system('cls')
 
 print 'Pseudo of Player 2: '
 player2 = gets.chomp
 print "\nWhich character do you want to use #{player2}?: "
 character2 = gets.chomp
-system("clear") || system("cls")
+system('clear') || system('cls')
 
 print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
 disply_board(board)
