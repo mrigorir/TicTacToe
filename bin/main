@@ -22,8 +22,7 @@ def check_input(array, char, player, loc, usedd)
       array[loc] = char
       disply_board(array)
     elsif loc.to_i > array.length
-      print 'This number is too greater,choose a position from (0-8): '
-      loc = gets.chomp
+      print "This number is too greater \n"
     end
   end
 end
@@ -53,6 +52,7 @@ i = 0
 locate = ''
 while i < (board.length / 2).to_i
   check_input(board, character1, player1, locate, used)
+  locate = ''
   check_input(board, character2, player2, locate, used)
   i += 1
 end
