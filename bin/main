@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 def disply_board(array)
   position = 0
   while position < array.length
@@ -19,21 +20,19 @@ def check_input(array, char, player, loc, usedd)
     loc = gets.chomp
     if loc =~ /[0-8]/ && loc.to_i.between?(0, 8) && loc.to_i <= array.length
       loc = loc.to_i
-    while taken?(loc, usedd)
-      loc = gets.chomp.to_i
-    end
+      loc = gets.chomp.to_i while taken?(loc, usedd)
       array[loc] = char
       disply_board(array)
     elsif loc.to_i > array.length - 1
       print "This number is too greater \n"
-      elsif loc.to_i.negative?
-        print "No negatvie numbers allowed \n"
+    elsif loc.to_i.negative?
+      print "No negatvie numbers allowed \n"
     end
   end
 end
 
 def same_char(player, char1, char2)
-  while char1 === char2
+  while char1 == char2
     print "#{player}, please choose another token. That one is already taken \n"
     print "\nWhich character do you want to use #{player}?: "
     char2 = gets.chomp
@@ -44,25 +43,25 @@ end
 def taken?(pos, array)
   if array.count(pos).zero? || array.empty?
     array << pos
-    return false
+    false
   else
-    print "This number is already taken."
-    print "Choose another number"
+    print 'This number is already taken.'
+    print 'Choose another number'
     true
   end
 end
 
-system("clear") || system("cls")
+system('clear') || system('cls')
 board = %w[0 1 2 3 4 5 6 7 8]
 used = []
-system("clear") || system("cls")
-puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
+system('clear') || system('cls')
+puts 'Welcome to our amazing Tic Tac Toe !!\n\n\n'
 
 print 'Pseudo of Player 1: '
 player1 = gets.chomp
 print "\nWhich character do you want to use #{player1}?: "
 character1 = gets.chomp
-system("clear") || system("cls")
+system('clear') || system('cls')
 
 print 'Pseudo of Player 2: '
 player2 = gets.chomp
@@ -70,7 +69,7 @@ print "\nWhich character do you want to use #{player2}?: "
 character2 = gets.chomp
 character2 = same_char(player2, character1, character2)
 
-system("clear") || system("cls")
+system('clear') || system('cls')
 
 print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
 disply_board(board)
@@ -83,4 +82,4 @@ while i < (board.length / 2).to_i
   check_input(board, character2, player2, locate, used)
   i += 1
 end
-
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
