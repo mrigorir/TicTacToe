@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# rubocop: disable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
+
 def disply_board(array)
   position = 0
   while position < array.length
@@ -17,15 +19,9 @@ def check_input(array, char, player, loc, usedd)
   while loc.is_a?(String)
     print "#{player}, choose a position from (0-8) to place in the board: "
     loc = gets.chomp
-<<<<<<< HEAD
-    if loc.any?(/[0-8]/) && loc.to_i.between?(0, 8) && loc.to_i < array.length
-=======
     if loc =~ /[0-8]/ && loc.to_i.between?(0, 8) && loc.to_i <= array.length
->>>>>>> aae92d79dc5501a7f57884051d9f5282f2ead3c4
       loc = loc.to_i
-    while taken?(loc, usedd)
-      loc = gets.chomp.to_i
-    end
+      loc = gets.chomp.to_i while taken?(loc, usedd)
       array[loc] = char
       disply_board(array)
     elsif loc.to_i > array.length - 1
@@ -35,12 +31,10 @@ def check_input(array, char, player, loc, usedd)
     end
   end
 end
-
-<<<<<<< HEAD
 system('clear') || system('cls')
-=======
+
 def same_char(player, char1, char2)
-  while char1 === char2
+  while char1 == char2
     print "#{player}, please choose another token. That one is already taken \n"
     print "\nWhich character do you want to use #{player}?: "
     char2 = gets.chomp
@@ -51,16 +45,15 @@ end
 def taken?(pos, array)
   if array.count(pos).zero? || array.empty?
     array << pos
-    return false
+    false
   else
-    print "This number is already taken."
-    print "Choose another number"
+    print 'This number is already taken.'
+    print 'Choose another number'
     true
   end
 end
 
-system("clear") || system("cls")
->>>>>>> aae92d79dc5501a7f57884051d9f5282f2ead3c4
+system('clear') || system('cls')
 board = %w[0 1 2 3 4 5 6 7 8]
 used = []
 system('clear') || system('cls')
@@ -76,13 +69,10 @@ print 'Pseudo of Player 2: '
 player2 = gets.chomp
 print "\nWhich character do you want to use #{player2}?: "
 character2 = gets.chomp
-<<<<<<< HEAD
 system('clear') || system('cls')
-=======
 character2 = same_char(player2, character1, character2)
 
-system("clear") || system("cls")
->>>>>>> aae92d79dc5501a7f57884051d9f5282f2ead3c4
+system('clear') || system('cls')
 
 print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
 disply_board(board)
@@ -95,7 +85,5 @@ while i < (board.length / 2).to_i
   check_input(board, character2, player2, locate, used)
   i += 1
 end
-<<<<<<< HEAD
-=======
+# rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
 
->>>>>>> aae92d79dc5501a7f57884051d9f5282f2ead3c4
