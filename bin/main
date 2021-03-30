@@ -20,17 +20,16 @@ def check_input(array, char, player, loc, usedd)
     next unless loc =~ /[0-9]/ && loc.to_i < array.length
 
     loc = loc.to_i
-    usedd.delete(loc)
+    usedd.push(loc)
     array[loc] = char
     disply_board(array)
     next
   end
-  loc
 end
 
 clear = `clear`
 board = %w[0 1 2 3 4 5 6 7 8]
-used = %w[0 1 2 3 4 5 6 7 8]
+used = []
 puts clear
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
