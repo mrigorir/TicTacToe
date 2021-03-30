@@ -19,14 +19,14 @@ def check_input(array, player_char, player, loc, usedd)
   while loc.is_a?(String)
     print "#{player}, choose a position from (1-9) to place in the board: "
     loc = gets.chomp
-    if loc =~ /[1-9]/ && loc.to_i.between?(1, 9) && loc.to_i < array.length
+    if loc =~ /[1-9]/ && loc.to_i.between?(1, 9) && loc.to_i <= array.length
       loc = loc.to_i
       loc = gets.chomp.to_i while taken?(loc, usedd)
       array[loc - 1] = player_char
       disply_board(array)
     elsif loc.to_i.zero?
       print "Zero is not part of the range (1-9)\n"
-    elsif loc.to_i > array.length - 1
+    elsif loc.to_i > array.length
       print "This number is too greater \n"
     elsif loc.to_i.negative?
       print "No negatvie numbers allowed \n"
@@ -58,6 +58,8 @@ end
 system('clear') || system('cls')
 board = %w[1 2 3 4 5 6 7 8 9]
 used = []
+move = 0
+game = true
 player_char = %w[X 0]
 
 system('clear') || system('cls')
@@ -79,13 +81,17 @@ system('clear') || system('cls')
 print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
 disply_board(board)
 
-i = 0
 locate = ''
-while i < (board.length / 2).to_i
-
+while game && move <= 9
   check_input(board, player_char[0], player1, locate, used)
+  move += 1
+  puts move
   locate = ''
   check_input(board, player_char[1], player2, locate, used)
-  i += 1
+  move += 1
+  if move == 9
+    print "It's a TIE!"
+    break
+  end
 end
 # rubocop: enable Metrics/PerceivedComplexity, Metrics/CyclomaticComplexity
