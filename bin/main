@@ -17,13 +17,15 @@ def check_input(array, char, player, loc, usedd)
   while loc.is_a?(String)
     print "#{player}, choose a position from (0-8) to place in the board: "
     loc = gets.chomp
-    next unless loc =~ /[0-9]/ && loc.to_i < array.length
-
-    loc = loc.to_i
-    usedd.push(loc)
-    array[loc] = char
-    disply_board(array)
-    next
+    if loc.to_i.between?(0, 8) && loc.to_i.abs < array.length
+      loc = loc.to_i
+      usedd.push(loc)
+      array[loc] = char
+      disply_board(array)
+    elsif loc.to_i > array.length
+      print 'This number is too greater,choose a position from (0-8): '
+      loc = gets.chomp
+    end
   end
 end
 
