@@ -58,7 +58,7 @@ def taken?(pos, array)
     false
   else
     print 'This number is already taken,'
-    puts " choose another number."
+    puts 'choose another number.'
     true
   end
 end
