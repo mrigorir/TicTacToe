@@ -59,13 +59,13 @@ ruby bin/main.rb
 
 - GitHub: [Anvi98](https://github.com/Anvi98)
 - Twitter: [@anvi_al](https://twitter.com/anvi_al)
-- LinkedIn: [@nsabimana-emmanuel-4276091b2](https://www.linkedin.com/in/anvi-alex-eponon/)
+- LinkedIn: [@anvi98](https://www.linkedin.com/in/anvi-alex-eponon/)
 
 👤 **Marco Para**
 
-- GitHub: [mrigorir](#)
-- Twitter: [@Marco](#)
-- LinkedIn: [Marco](#)
+- GitHub: [mrigorir](https://github.com/mrigorir)
+- Twitter: [@Marco](https://twitter.com/marcoparra311)
+- LinkedIn: [Marco](https://www.linkedin.com/in/marco-alonso-parra/)
 
 ## 🤝 Contributing
 
