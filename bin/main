@@ -32,6 +32,15 @@ def check_input(array, player_char, player, loc, usedd, move)
     end
   end
 end
+
+def check_empty_pseudo(player)
+  while player.empty?
+    print 'Enter a valid pseudo: '
+    player = gets.chomp
+  end
+  player
+end
+
 system('clear') || system('cls')
 
 # def same_char(player, char1, char2)
@@ -59,16 +68,22 @@ board = %w[1 2 3 4 5 6 7 8 9]
 used = []
 move = 0
 player_char = %w[X 0]
+player1 = ''
+player2 = ''
 
 system('clear') || system('cls')
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
-print 'Pseudo of Player 1: '
+print 'Player 1 should enter his pseudo: '
 player1 = gets.chomp
+player1 = check_empty_pseudo(player1) if player1.empty?
+p player1
 system('clear') || system('cls')
 
-print 'Pseudo of Player 2: '
+print 'Player 2 should enter his pseudo: '
 player2 = gets.chomp
+player2 = check_empty_pseudo(player2) if player2.empty?
+p player2
 
 print "#{player1} is going to play with X\n"
 print "#{player2} is going to play with O\n"
