@@ -3,14 +3,14 @@ def disply_board(array)
   position = 0
   while position < array.length
     if (position % 3).zero?
-      print "\n"
+      puts ''
       print "---+---+---+\n"
     end
     print " #{array[position]} |"
     position += 1
   end
-  print "\n---+---+---+\n"
-  print "\n\n\n\n"
+  puts "\n---+---+---+"
+  puts "\n\n\n"
 end
 
 def check_input(array, player_char, player, loc, usedd, move)
@@ -23,12 +23,12 @@ def check_input(array, player_char, player, loc, usedd, move)
       array[loc - 1] = player_char
       disply_board(array)
     elsif loc.to_i.zero?
-      print "Zero is not part of the range (1-9)\n"
+      puts 'Zero is not part of the range (1-9)'
     elsif move == array.length
-      print "IT's a TIE !! \n"
+      puts "IT's a TIE !! "
       break
     elsif loc.to_i.negative?
-      print "No negatvie numbers allowed \n"
+      puts 'No negatvie numbers allowed.'
     end
   end
 end
@@ -58,7 +58,7 @@ def taken?(pos, array)
     false
   else
     print 'This number is already taken,'
-    print " choose another number.\n"
+    puts " choose another number."
     true
   end
 end
@@ -85,13 +85,13 @@ player2 = gets.chomp
 player2 = check_empty_pseudo(player2) if player2.empty?
 p player2
 
-print "#{player1} is going to play with X\n"
-print "#{player2} is going to play with O\n"
+puts "#{player1} is going to play with X"
+puts "#{player2} is going to play with O"
 system('clear') || system('cls')
 
 system('clear') || system('cls')
 
-print "Great ! #{player1} and #{player2} let start the battle !!\n\n\n\n"
+puts "Great ! #{player1} and #{player2} let start the battle !!\n\n\n"
 disply_board(board)
 
 locate = ''
