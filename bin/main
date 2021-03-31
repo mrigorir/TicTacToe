@@ -1,0 +1,111 @@
+#!/usr/bin/env ruby
+def disply_board(array)
+  position = 0
+  while position < array.length
+    if (position % 3).zero?
+      puts ''
+      print "---+---+---+\n"
+    end
+    print " #{array[position]} |"
+    position += 1
+  end
+  puts "\n---+---+---+"
+  puts "\n\n\n"
+end
+
+def check_input(array, player_char, player, loc, usedd, move)
+  while loc.is_a?(String)
+    print "#{player}, choose a position from (1-9) to place in the board: "
+    loc = gets.chomp
+    if loc =~ /[1-9]/ && loc.to_i.between?(1, 9) && loc.to_i <= array.length
+      loc = loc.to_i
+      loc = gets.chomp.to_i while taken?(loc, usedd)
+      array[loc - 1] = player_char
+      disply_board(array)
+    elsif loc.to_i.zero?
+      puts 'Zero is not part of the range (1-9)'
+    elsif move == array.length
+      puts "IT's a TIE !! "
+      break
+    elsif loc.to_i.negative?
+      puts 'No negatvie numbers allowed.'
+    end
+  end
+end
+
+def check_empty_pseudo(player)
+  while player.empty?
+    print 'Enter a valid pseudo: '
+    player = gets.chomp
+  end
+  player
+end
+
+system('clear') || system('cls')
+
+# def same_char(player, char1, char2)
+#   while char1 == char2
+#     print "#{player}, please choose another token. That one is already taken \n"
+#     print "\nWhich character do you want to use #{player}?: "
+#     char2 = gets.chomp
+#   end
+#   char2
+# end
+
+def taken?(pos, array)
+  if array.count(pos).zero? || array.empty?
+    array << pos
+    false
+  else
+    print 'This number is already taken,'
+    puts 'choose another number.'
+    true
+  end
+end
+
+system('clear') || system('cls')
+board = %w[1 2 3 4 5 6 7 8 9]
+used = []
+move = 0
+player_char = %w[X 0]
+player1 = ''
+player2 = ''
+
+system('clear') || system('cls')
+puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
+
+print 'Player 1 should enter his pseudo: '
+player1 = gets.chomp
+player1 = check_empty_pseudo(player1) if player1.empty?
+p player1
+system('clear') || system('cls')
+
+print 'Player 2 should enter his pseudo: '
+player2 = gets.chomp
+player2 = check_empty_pseudo(player2) if player2.empty?
+p player2
+
+puts "#{player1} is going to play with X"
+puts "#{player2} is going to play with O"
+system('clear') || system('cls')
+
+system('clear') || system('cls')
+
+puts "Great ! #{player1} and #{player2} let start the battle !!\n\n\n"
+disply_board(board)
+
+locate = ''
+0.upto(9) do
+  next unless move < board.length
+
+  check_input(board, player_char[0], player1, locate, used, move)
+  move += 1
+  if move == 9
+    print "IT's a TIE !!\n\n"
+    break
+  end
+
+  locate = ''
+  check_input(board, player_char[1], player2, locate, used, move)
+  move += 1
+end
