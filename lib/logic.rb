@@ -11,7 +11,7 @@ class TicTacToe
   def taken?(pos, array)
     @pos = pos
     @board = array
-    return unless @board.count(@pos).zero? || @board.empty?
+    return true unless @board.count(@pos).zero? || @board.empty?
 
     @board << @pos
     false

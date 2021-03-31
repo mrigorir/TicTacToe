@@ -1,12 +1,17 @@
 #!/usr/bin/env ruby
 require_relative '../lib/logic.rb'
 class Game
-  attr_reader :board
+  attr_reader :board, :move
+  attr_accessor :player1, :player2, :players, :loc, :locations, :usedd
   def initialize
-    @board = %w[0 1 2 3 4 5 6 7 8]
+    @board = %w[1 2 3 4 5 6 7 8 9]
     @player_char = %w[X 0]
     @game = true
-    @locate = ''
+    @players = []
+    @temp = ''
+    @locations = []
+    @loc = ''
+    @usedd = [2]
     @move = 0
     @tic_tac_toe = TicTacToe.new
   end
@@ -25,100 +30,61 @@ class Game
     puts "\n\n\n"
   end
 
-  def core_game
-    0.upto(9) do
-      next unless @move < @board.length
+  def create_players
+    @i = 0
+    while @i < 2
+      print "Enter pseudo for Player #{@i+1}: "
+      input = gets.chomp
+      test = Player.new(input, @player_char[@i])
+      @players << test.name
+      @i += 1
+    end
+    @players
+  end
 
-      check_input(@board, @player_char[0], @player, @locate, @used, @move)
-      @move += 1
-      if @move == 9
-        puts "IT's a TIE !!\n"
-        break
+  def take_input(usedd)
+    @i = 0
+    @usedd = usedd
+    @move = move
+    while @temp.is_a?(String) && @i < 2
+      print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
+      @temp = gets.chomp
+      check_input(@temp)
+      @i += 1
+    end
+  end
+
+  def check_input(input_user)
+    @input_user = input_user
+    if @input_user =~ /[1-9]/ && @input_user.to_i.between?(1, 9) && @input_user.to_i <= @board.length
+      @test2 = @input_user.to_i
+      @test3 = @tic_tac_toe.taken?(@test2, @usedd) ## => Boolean
+      while @test3
+        print 'Spot not available, choose another one: '
+        @input_user = gets.chomp.to_i
+        break unless @tic_tac_toe.taken?(@input_user.to_i, @usedd)
       end
-      @locate = ''
-      check_input(@board, @player_char[1], @player2, @locate, @used, @move)
-      @move += 1
+      @board[@test2 - 1] = @player_char[@i]
+      disply_board
+    elsif @input_user =~ /[0-9a-zA-Z_]/
+      print "Invalid input !\n"
+      take_input(usedd)
     end
   end
 end
-
-hey = Game.new
-
-def check_input(array, player_char, player, loc, usedd, move)
-  while loc.is_a?(String)
-    print "#{player}, choose a position from (1-9) to place in the board: "
-    loc = gets.chomp
-    if loc =~ /[1-9]/ && loc.to_i.between?(1, 9) && loc.to_i <= array.length
-      loc = loc.to_i
-      if !@tic_tac_toe.taken?(loc, usedd)
-        loc = gets.chomp.to_i
-      elsif !@tic_tac_toe.taken?(loc, usedd)
-        print 'This number is already taken,'
-        puts 'choose another number.'
-      end
-      array[loc - 1] = player_char
-      disply_board(array)
-    elsif loc.to_i.zero?
-      puts 'Zero is not part of the range (1-9)'
-    elsif move == array.length
-      puts "IT's a TIE !! "
-      break
-    elsif loc.to_i.negative?
-      puts 'No negatvie numbers allowed.'
-    end
-  end
-end
-
-# def pseudo_empty?(player)
-#   while player.empty?
-#     print 'Enter a valid pseudo: '
-#     player = gets.chomp
-#   end
-#   player
-# end
-
-system('clear') || system('cls')
-
-# def taken?(pos, array)
-#   if array.count(pos).zero? || array.empty?
-#     array << pos
-#     false
-#   else
-#     print 'This number is already taken,'
-#     puts 'choose another number.'
-#     true
-#   end
-# end
 
 system('clear') || system('cls')
 used = []
-move = 0
-player1 = ''
-player2 = ''
-
 system('clear') || system('cls')
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
-print 'Player 1 should enter his pseudo: '
-player1 = gets.chomp
-player1 = pseudo_empty?(player1) if player1.empty?
-p player1
 system('clear') || system('cls')
 
-print 'Player 2 should enter his pseudo: '
-player2 = gets.chomp
-player2 = pseudo_empty?(player2) if player2.empty?
-p player2
+game = Game.new
+store_players = game.create_players
+puts "#{store_players[0]} is going to play with X\n"
+puts "#{store_players[1]} is going to play with O\n\n"
+puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !!\n\n\n"
 
-puts "#{player1} is going to play with X"
-puts "#{player2} is going to play with O"
-system('clear') || system('cls')
-
-system('clear') || system('cls')
-
-puts "Great ! #{player1} and #{player2} let start the battle !!\n\n\n"
-
-hey.disply_board
-hey.core_game
-
-
+game.disply_board
+game.take_input(used)
