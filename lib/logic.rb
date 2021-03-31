@@ -1,37 +1,32 @@
 class TicTacToe
-  attr_accessor :token
-  attr_reader :player, :board
+  attr_accessor :token, :player
+  attr_reader :board, :game
 
   def initialize
     @board = %w[0 1 2 3 4 5 6 7 8]
     @game = true
   end
 
-  public
-  def disply_board(board)
-    @array = board
-  end
-
   def check_input(array, char, player, loc, usedd)
-    @array = array
+    @board = array
     @char = char
-    @player = player 
+    @player = player
     @loc = loc
     @usedd = usedd
   end
-  
-  def same_char(player, token1, token2)
+
+  def same_char(player, token)
     @player = player
-    @token1 = token1
-    @token2 = tokken2
+    @token = token
   end
 
   def taken?(pos, array)
     @pos = pos
-    @array = array
+    @board = array
   end
 
   private
+
   def disply_board(array)
     @array = array
   end
@@ -45,7 +40,6 @@ class TicTacToe
       if index_win[i].all?(find_index(current_token))
       end
     end
-
   end
 end
 
