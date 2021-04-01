@@ -50,7 +50,7 @@ class Game
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp)
-      p @tic_tac_toe.arbiter(@board, @temp)
+      p @tic_tac_toe.arbiter(@board, @temp, @player_char)
       @i += 1
     end
   end
