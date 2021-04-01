@@ -93,4 +93,3 @@ while i < 9
   game.take_input(used)
   i += 1
 end
-
