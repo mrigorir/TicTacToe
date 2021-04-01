@@ -17,6 +17,32 @@ class TicTacToe
     false
   end
 
+  def arbiter(array, user_input)
+    @array = array
+    p "hello"
+    @user_input = user_input.to_i
+    @indexes_win = [[0, 4, 8], [0, 1, 2], [0, 3, 6], [1, 4, 7], [2, 4, 6], [2, 5, 8], [3, 4, 5], [6, 7, 8]]
+    @i = 0
+    while @i < @indexes_win.length
+      if @indexes_win[@i].any?(@user_input)
+          @indexes_win[@i].each do |index|
+            p @array
+            if @array.at(index).all?(@player_char[0])
+              @player_char[0]
+              break
+            elsif @array.at(index).all?(@player_char[1])
+              @player_char[1]
+              break
+            else
+              return "TIE"
+              break
+            end
+          end
+        end
+      @i += 1
+    end
+  end
+
   private
 
   def pseudo_empty?(player)
@@ -25,16 +51,6 @@ class TicTacToe
     player
   end
 
-  def arbiter(array, current_token)
-    @array = array
-    @current_token = current_token
-    index_win = [[0, 4, 8], [0, 1, 2][0, 3, 6], [1, 4, 7], [2, 4, 6], [2, 5, 8], [3, 4, 5], [6, 7, 8]]
-    i = 0
-    while i < index_win.length
-      if index_win[i].all?(find_index(current_token))
-      end
-    end
-  end
 end
 
 class Player
