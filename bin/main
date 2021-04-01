@@ -50,6 +50,7 @@ class Game
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp)
+      p @tic_tac_toe.arbiter(@board, @temp)
       @i += 1
     end
   end
@@ -87,4 +88,9 @@ puts "#{store_players[1]} is going to play with O\n\n"
 puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !!\n\n\n"
 
 game.disply_board
-game.take_input(used)
+i = 0
+while i < 9
+  game.take_input(used)
+  i += 1
+end
+
