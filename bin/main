@@ -15,7 +15,7 @@ class Game
     @move = 0
     @tic_tac_toe = TicTacToe.new
   end
-
+  
   def disply_board
     position = 0
     while position < @board.length
@@ -37,20 +37,24 @@ class Game
       input = gets.chomp
       test = Player.new(input, @player_char[@i])
       @players << test.name
+      while @tic_tac_toe.pseudo_empty?(@players)
+        puts "Don't leave player names empty"
+        @players = gets.chomp
+      end
       @i += 1
     end
     @players
   end
 
-  def take_input(usedd, i)
-    @i = i
+  def take_input(usedd)
+    @i = 0
     @usedd = usedd
     @move = move
     @flag = true
     while @temp.is_a?(String) && @i < 2 && @flag
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
-      check_input(@temp, @i)
+      check_input(@temp)
       win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
       @i += 1
       if win.length > 0
@@ -60,8 +64,7 @@ class Game
     @flag
   end
 
-  def check_input(input_user, i)
-    @i = i
+  def check_input(input_user)
     @input_user = input_user
     if @input_user =~ /[1-9]/ && @input_user.to_i.between?(1, 9) && @input_user.to_i <= @board.length
       @test2 = @input_user.to_i
@@ -75,7 +78,7 @@ class Game
       disply_board
     elsif @input_user =~ /[0-9a-zA-Z_]/
       print "Invalid input !\n"
-      take_input(usedd, @i)
+      take_input(usedd)
     end
   end
 end
@@ -96,7 +99,7 @@ puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !
 game.disply_board
 i = 0
 while i < 9
-  break unless game.take_input(used, i % 2)
+  break unless game.take_input(used)
   i += 1
 end
 
