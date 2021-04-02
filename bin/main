@@ -14,6 +14,25 @@ class Game
     @usedd = [2]
     @move = 0
     @tic_tac_toe = TicTacToe.new
+    @arb_i = 0
+  end
+
+  def gaming
+    @gamin = []
+    @store_players = create_players
+    puts "#{@store_players[0]} is going to play with X\n"
+    puts "#{@store_players[1]} is going to play with O\n\n"
+    puts "Great ! #{@store_players[0]} and #{@store_players[1]} let start the battle !!\n\n\n"
+
+    disply_board
+    i = 0
+    while i < 9
+      break unless take_input(@gamin)
+
+      i += 1
+    end
+
+    p tic_tac_toe.winner
   end
 
   def disply_board
@@ -33,7 +52,7 @@ class Game
   def create_players
     @i = 0
     while @i < 2
-      print "Enter pseudo for Player #{@i + 1}: "
+      print "Enter pseudo for Player #{@i+1}: "
       input = gets.chomp
       test = Player.new(input, @player_char[@i])
       @players << test.name
@@ -58,7 +77,7 @@ class Game
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp, @players[@i])
-      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
+      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], @players[@i])
       @i += 1
       @flag = false if win.length.positive?
     end
@@ -86,30 +105,27 @@ class Game
       check_input(@temp, @current_player)
     end
   end
-
 end
 
-system('clear') || system('cls')
-used = []
+game = Game.new
 system('clear') || system('cls')
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
-system('clear') || system('cls')
-
-game = Game.new
-store_players = game.create_players
-puts "#{store_players[0]} is going to play with X\n"
-puts "#{store_players[1]} is going to play with O\n\n"
-puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !!\n\n\n"
-
-game.disply_board
-i = 0
-while i < 9
-  break unless game.take_input(used)
-
-  i += 1
-end
-
-p game.tic_tac_toe.winner
+game.gaming
 
 p 'Game over!'
+
+print 'Do you want do play again? (Y/N): '
+choice = gets.chomp
+inside = true if choice == 'Y'
+while inside
+  game = Game.new
+  system('clear') || system('cls')
+  puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
+  game.gaming
+  print 'Do you want do play again? (Y/N): '
+  choice = gets.chomp
+  inside = false unless choice == 'Y'
+end
+
+puts 'Good Bye'
