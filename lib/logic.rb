@@ -4,6 +4,7 @@ class TicTacToe
   def initialize
     @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @winner = ''
+    @county = 1
   end
 
   def check_input(_array, _player_char, player, _loc, usedd)
@@ -40,18 +41,20 @@ class TicTacToe
         sub_array[i] = @player_char if el == @user_input.to_i
         sub_array
       end
-      if sub_array.all?('X')
+      if sub_array.all?('X') && @county < 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
-      end
-      if sub_array.all?('O')
+      elsif sub_array.all?('O') && @county < 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
       end
     end
+    print "It's a TIE !" if @county == 9
+    @county += 1
+
     ''
   end
-  end
+end
 
 class Player
   attr_accessor :name, :token

@@ -52,14 +52,14 @@ class Game
   def create_players
     @i = 0
     while @i < 2
-      print "Enter pseudo for Player #{@i+1}: "
+      print "Enter pseudo for Player #{@i + 1}: "
       input = gets.chomp
       test = Player.new(input, @player_char[@i])
       @players << test.name
       if @tic_tac_toe.pseudo_empty?(@players[@i])
         while @tic_tac_toe.pseudo_empty?(@players[@i])
           puts "Don't leave player names empty"
-          print "Enter pseudo for Player #{@i+1}: "
+          print "Enter pseudo for Player #{@i + 1}: "
           @players[@i] = gets.chomp
         end
       end
@@ -71,7 +71,6 @@ class Game
   def take_input(usedd)
     @i = 0
     @usedd = usedd
-    @move = move
     @flag = true
     while @temp.is_a?(String) && @i < 2 && @flag
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
