@@ -14,6 +14,9 @@ class Game
     @usedd = [2]
     @move = 0
     @tic_tac_toe = TicTacToe.new
+    @countx = 0
+    @counto = 0
+    @arb_i = 0
   end
 
   def disply_board
@@ -47,10 +50,11 @@ class Game
     @usedd = usedd
     @move = move
     while @temp.is_a?(String) && @i < 2
+      @arb_i += 1
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp)
-      @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
+      @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], @countx, @counto, @arb_i)
       @i += 1
     end
   end
