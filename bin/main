@@ -6,7 +6,6 @@ class Game
   def initialize
     @board = %w[1 2 3 4 5 6 7 8 9]
     @player_char = %w[X O]
-    @game = true
     @players = []
     @temp = ''
     @locations = []
@@ -15,7 +14,36 @@ class Game
     @move = 0
     @tic_tac_toe = TicTacToe.new
   end
+
+  def start_game
+    system('clear') || system('cls')
+    puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
+    system('clear') || system('cls')
+    store_players = game.create_players
+    puts "#{store_players[0]} is going to play with X\n"
+    puts "#{store_players[1]} is going to play with O\n\n"
+    puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !!\n\n\n"
+
+   
+    i = 0
+    while i < 9
+      break unless game.take_input(used)
   
+      i += 1
+    end
+  
+    p game.tic_tac_toe.winner
+    p 'Game over!'
+  end
+
+  def play_game(choice)
+    @choice = choice
+    while again?
+      @choice = gets.chomp
+      @choice == 'Y' ? true : false
+    end
+  end
+
   def disply_board
     position = 0
     while position < @board.length
@@ -33,14 +61,14 @@ class Game
   def create_players
     @i = 0
     while @i < 2
-      print "Enter pseudo for Player #{@i+1}: "
+      print "Enter pseudo for Player #{@i + 1}: "
       input = gets.chomp
       test = Player.new(input, @player_char[@i])
       @players << test.name
       if @tic_tac_toe.pseudo_empty?(@players[@i])
         while @tic_tac_toe.pseudo_empty?(@players[@i])
           puts "Don't leave player names empty"
-          print "Enter pseudo for Player #{@i+1}: "
+          print "Enter pseudo for Player #{@i + 1}: "
           @players[@i] = gets.chomp
         end
       end
@@ -58,11 +86,9 @@ class Game
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp, @players[@i])
-      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
+      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], @players[@i])
       @i += 1
-      if win.length > 0
-        @flag = false
-      end
+      @flag = false if win.length.positive?
     end
     @flag
   end
@@ -88,29 +114,23 @@ class Game
       check_input(@temp, @current_player)
     end
   end
-
 end
 
 system('clear') || system('cls')
-used = []
-system('clear') || system('cls')
-puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
-
-system('clear') || system('cls')
-
 game = Game.new
-store_players = game.create_players
-puts "#{store_players[0]} is going to play with X\n"
-puts "#{store_players[1]} is going to play with O\n\n"
-puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !!\n\n\n"
-
 game.disply_board
-i = 0
-while i < 9
-  break unless game.take_input(used)
-  i += 1
+used = []
+again = true
+var = ''
+while again
+  game.start_game
+  puts "Wanna play again? (write Y or N please)"
+  var = gets.chomp
+  game.play_game(var)
+  if play_game(var) == true
+    game.start_game
+  else
+    puts 'Don\'t fuck again!'
+    break
+  end
 end
-
-p game.tic_tac_toe.winner
-
-p 'Game over!'
