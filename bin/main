@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require_relative '../lib/logic.rb'
 class Game
-  attr_reader :board, :move
+  attr_reader :board, :move, :tic_tac_toe
   attr_accessor :player1, :player2, :players, :loc, :locations, :usedd
   def initialize
     @board = %w[1 2 3 4 5 6 7 8 9]
@@ -42,20 +42,26 @@ class Game
     @players
   end
 
-  def take_input(usedd)
-    @i = 0
+  def take_input(usedd, i)
+    @i = i
     @usedd = usedd
     @move = move
-    while @temp.is_a?(String) && @i < 2
+    @flag = true
+    while @temp.is_a?(String) && @i < 2 && @flag
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
-      check_input(@temp)
-      @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
+      check_input(@temp, @i)
+      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i])
       @i += 1
+      if win.length > 0
+        @flag = false
+      end
     end
+    @flag
   end
 
-  def check_input(input_user)
+  def check_input(input_user, i)
+    @i = i
     @input_user = input_user
     if @input_user =~ /[1-9]/ && @input_user.to_i.between?(1, 9) && @input_user.to_i <= @board.length
       @test2 = @input_user.to_i
@@ -69,7 +75,7 @@ class Game
       disply_board
     elsif @input_user =~ /[0-9a-zA-Z_]/
       print "Invalid input !\n"
-      take_input(usedd)
+      take_input(usedd, @i)
     end
   end
 end
@@ -90,6 +96,10 @@ puts "Great ! #{store_players[0]} and #{store_players[1]} let start the battle !
 game.disply_board
 i = 0
 while i < 9
-  game.take_input(used)
+  break unless game.take_input(used, i % 2)
   i += 1
 end
+
+p game.tic_tac_toe.winner
+
+p 'Game over!'
