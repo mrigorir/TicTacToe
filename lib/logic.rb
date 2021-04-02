@@ -1,12 +1,13 @@
 class TicTacToe
   attr_accessor :token, :player
-  attr_reader :board, :game, :player_char, :loc, :move, :winner, :answer
+  attr_reader :board, :game, :player_char, :loc, :move, :winner
   def initialize
     @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @winner = ''
+    @county = 1
   end
 
-  def check_input(player, usedd)
+  def check_input(_array, _player_char, player, _loc, usedd)
     @player = player
     @usedd = usedd
   end
@@ -20,6 +21,15 @@ class TicTacToe
     false
   end
 
+  def pseudo_empty?(player)
+    @player = player
+    if @player.empty? || @player.nil?
+      true
+    else
+      false
+    end
+  end
+
   def arbiter(array, user_input, player_char, playername)
     @array = array
     @player_char = player_char
@@ -30,25 +40,21 @@ class TicTacToe
         sub_array[i] = @player_char if el == @user_input.to_i
         sub_array
       end
-      if sub_array.all?('X')
+      if sub_array.all?('X') && @county < 9
+        @winner = "#{@playername} wins the game. Congrats!"
+        return 'win'
+      elsif sub_array.all?('O') && @county < 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
       end
-      if sub_array.all?('O')
-        @winner =  "#{@playername} wins the game. Congrats!"
-        return 'win'
-      end
     end
-    ''
-  end
+    if @county == 9
+      puts "It's a TIE !\n"
+      return 'win'
+    end
+    @county += 1
 
-  def pseudo_empty?(player)
-    @player = player
-    if @player.empty? || @player.nil?
-      true
-    else
-      false
-    end
+    ''
   end
 end
 
