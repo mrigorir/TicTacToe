@@ -14,9 +14,6 @@ class Game
     @usedd = [2]
     @move = 0
     @tic_tac_toe = TicTacToe.new
-    @countx = 0
-    @counto = 0
-    @arb_i = 0
   end
 
   def disply_board
@@ -43,7 +40,7 @@ class Game
       if @tic_tac_toe.pseudo_empty?(@players[@i])
         while @tic_tac_toe.pseudo_empty?(@players[@i])
           puts "Don't leave player names empty"
-          print "Enter pseudo for Player #{@i + 1}: "
+          print "Enter pseudo for Player #{@i+1}: "
           @players[@i] = gets.chomp
         end
       end
@@ -89,6 +86,7 @@ class Game
       check_input(@temp, @current_player)
     end
   end
+
 end
 
 system('clear') || system('cls')
