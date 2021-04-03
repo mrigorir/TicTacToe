@@ -47,15 +47,14 @@ class TicTacToe
         return 'win'
       end
     end
+    p @county
     if @county == 9
-      print "It's a TIE !\n"
-      return 'tie'
+      @tie = "It's a TIE !\n"
+      return "#{@tie} So sorry for you"
     end
     @county += 1
 
     return '' if @county <= 9
-
-    ''
   end
 end
 

@@ -50,7 +50,7 @@ git clone git@github.com:mrigorir/TicTacToe.git
 Run the following command into your terminal:
 
 ```console
-ruby bin/main.rb
+ruby bin/main
 ```
 
 ## Authors
