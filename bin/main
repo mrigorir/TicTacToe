@@ -77,11 +77,19 @@ class Game
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp, @players[@i])
-      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], @players[@i])
+      @win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], @players[@i]) 
+      p @win
+        if @win[0] == false
+          print 'It\'s a TIE !'
+        @flag = false
+        break
+        elsif @win[1] == 9
+        puts "#{@win} is the Winner !! Congratulation"
+        @flag = true
+      end
       @i += 1
-      @flag = false if win.length.positive?
     end
-
+    @flag
   end
 
   def check_input(input_user, player)
@@ -112,8 +120,6 @@ system('clear') || system('cls')
 puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
 game.gaming
-
-p 'Game over!'
 
 print 'Do you want do play again? (Y/N): '
 choice = gets.chomp
