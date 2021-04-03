@@ -31,7 +31,6 @@ class Game
 
       i += 1
     end
-
     p tic_tac_toe.winner
   end
 
