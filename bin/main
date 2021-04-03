@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 require_relative '../lib/logic'
 class Game
-  attr_reader :board, :move, :tic_tac_toe, :players
-  attr_writer :players, :loc, :locations, :usedd
+  attr_accessor :players
+  attr_reader :board, :move, :tic_tac_toe
+  attr_writer :loc, :locations, :usedd
 
   def initialize
     @board = %w[1 2 3 4 5 6 7 8 9]
