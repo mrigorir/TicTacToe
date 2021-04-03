@@ -17,8 +17,9 @@ class Game
     @arb_i = 0
   end
 
-  def gaming
+  def gaming(wining)
     @gamin = []
+    @winning = wining
     @store_players = create_players
     puts "#{@store_players[0]} is going to play with X\n"
     puts "#{@store_players[1]} is going to play with O\n\n"
@@ -27,7 +28,7 @@ class Game
     disply_board
     i = 0
     while i < 9
-      break unless take_input(@gamin)
+      break unless take_input(@gamin, @winning)
 
       i += 1
     end
@@ -67,15 +68,16 @@ class Game
     @players
   end
 
-  def take_input(usedd)
+  def take_input(usedd, wining)
     @i = 0
+    @wining = wining
     @usedd = usedd
     @flag = true
     while @temp.is_a?(String) && @i < 2 && @flag
       print "#{@players[@i]}, choose a position from (1-9) to place in the board: "
       @temp = gets.chomp
       check_input(@temp, @players[@i])
-      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], players[@i])
+      win = @tic_tac_toe.arbiter(@board, @temp, @player_char[@i], players[@i], @wining)
       @i += 1
       @flag = false if win.length.positive?
     end

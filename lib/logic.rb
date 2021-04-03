@@ -3,7 +3,6 @@ class TicTacToe
   attr_reader :board, :game, :player_char, :loc, :move, :winner, :token
 
   def initialize
-    @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @winner = ''
     @county = 1
   end
@@ -39,11 +38,12 @@ class TicTacToe
     false
   end
 
-  def arbiter(array, user_input, player_char, playername)
+  def arbiter(array, user_input, player_char, playername, wining)
     @array = array
     @player_char = player_char
     @user_input = user_input
     @playername = playername
+    @indexes_win = wining
     @indexes_win.each do |sub_array|
       sub_array.map.with_index do |el, i|
         sub_array[i] = @player_char if el == @user_input.to_i
