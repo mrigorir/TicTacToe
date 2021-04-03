@@ -49,10 +49,7 @@ class TicTacToe
         sub_array[i] = @player_char if el == @user_input.to_i
         sub_array
       end
-      if sub_array.all?('X') && @county <= 9
-        @winner = "#{@playername} wins the game. Congrats!"
-        return 'win'
-      elsif sub_array.all?('O') && @county <= 9
+      if sub_array.all?('X') && @county <= 9 || sub_array.all?('O') && @county <= 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
       end
