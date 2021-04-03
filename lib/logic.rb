@@ -1,6 +1,6 @@
 class TicTacToe
-  attr_accessor :token, :player
-  attr_reader :board, :game, :player_char, :loc, :move, :winner
+  attr_writer :player
+  attr_reader :board, :game, :player_char, :loc, :move, :winner, :token, :player
 
   def initialize
     @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
@@ -29,6 +29,14 @@ class TicTacToe
     false
   end
 
+  def analize_input?(input)
+    @input = input
+    p @input
+    return true if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.negative? || @input > 9 || @input == 0 || @input == "0"
+
+    false
+  end
+
   def arbiter(array, user_input, player_char, playername)
     @array = array
     @player_char = player_char
@@ -39,18 +47,17 @@ class TicTacToe
         sub_array[i] = @player_char if el == @user_input.to_i
         sub_array
       end
-      if sub_array.all?('X') && @county < 9
+      if sub_array.all?('X') && @county <= 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
-      elsif sub_array.all?('O') && @county < 9
+      elsif sub_array.all?('O') && @county <= 9
         @winner = "#{@playername} wins the game. Congrats!"
         return 'win'
       end
     end
     if @county == 9
 
-      @winner = 'Game draw!'
-      puts "It's a TIE !\n"
+      @winner = 'It\'s a TIE. Good luck next time!'
       return 'end'
     end
     @county += 1
@@ -64,7 +71,8 @@ end
 private
 
 class Player
-  attr_accessor :name, :token
+  attr_reader :name, :token
+  attr_writer :name, :token
 
   def initialize(name, token)
     @name = name

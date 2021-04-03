@@ -27,15 +27,18 @@ Setup by  following the installation instructions below :
 * Open your terminal and locate on the folder you want to clone the repository.
 
 * Setup
- Create a new folder/directory for the project
- Be sure to have a Github account and that this account is connected locally on your PC
+ Create a new folder/directory for the project.
+ Be sure to have a Github account and that this account is connected locally on your PC.
 
 * Install
  Go to the desired directory on your terminal
  git clone git@github.com:mrigorir/TicTacToe.git
 
 * Run
- On your terminal, type bin/main.rb
+
+ On your terminal, type: cd bin.
+
+ Then, type ruby main so the game can begin.
 
 ### Install
 
@@ -50,7 +53,7 @@ git clone git@github.com:mrigorir/TicTacToe.git
 Run the following command into your terminal:
 
 ```console
-ruby bin/main.rb
+ruby bin/main
 ```
 
 ## Authors
