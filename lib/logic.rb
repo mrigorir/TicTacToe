@@ -49,8 +49,10 @@ class TicTacToe
       end
     end
     if @county == 9
+
+      @winner = 'Game draw!'
       puts "It's a TIE !\n"
-      return 'win'
+      return 'end'
     end
     @county += 1
 
