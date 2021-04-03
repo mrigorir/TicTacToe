@@ -1,6 +1,7 @@
 class TicTacToe
   attr_accessor :token, :player
   attr_reader :board, :game, :player_char, :loc, :move, :winner
+
   def initialize
     @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @winner = ''
@@ -23,11 +24,9 @@ class TicTacToe
 
   def pseudo_empty?(player)
     @player = player
-    if @player.empty? || @player.nil?
-      true
-    else
-      false
-    end
+    return true if @player.empty? || @player.nil?
+
+    false
   end
 
   def arbiter(array, user_input, player_char, playername)
@@ -56,9 +55,13 @@ class TicTacToe
     end
     @county += 1
 
+    return '' if @county <= 9
+
     ''
   end
 end
+
+private
 
 class Player
   attr_accessor :name, :token
