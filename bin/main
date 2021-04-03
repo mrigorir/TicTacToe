@@ -3,7 +3,7 @@ require_relative '../lib/logic'
 class Game
   attr_reader :board, :move, :tic_tac_toe, :players
   attr_writer :players, :loc, :locations, :usedd
- 
+
   def initialize
     @board = %w[1 2 3 4 5 6 7 8 9]
     @player_char = %w[X O]
@@ -85,7 +85,6 @@ class Game
 
   def check_input(input_user, player)
     @input_user = input_user
-    @input_user
     @current_player = player
     if @input_user =~ /[1-9]/ && @input_user.to_i.between?(1, 9) && @input_user.to_i <= @board.length
       @test2 = @input_user.to_i
@@ -94,32 +93,32 @@ class Game
         while @test3
           disply_board
           print "#{@current_player}, that spot is not available, please choose another one: "
-           @review_input = gets.chomp.to_i
-           @reviewer = @tic_tac_toe.analize_input?(@review_input)
+          @review_input = gets.chomp.to_i
+          @reviewer = @tic_tac_toe.analize_input?(@review_input)
           if @reviewer == false
             @test3 = @tic_tac_toe.taken?(@review_input, @usedd)
-              if @test3 == false
-                print "\n#{@current_player}, the '#{ @player_char[@i]}' player has chosen spot ##{@review_input}\n"
-                @board[@review_input - 1] = @player_char[@i]
-                disply_board
-                @temp = @review_input.to_s
-              end
+            if @test3 == false
+              print "\n#{@current_player}, the '#{@player_char[@i]}' player has chosen spot ##{@review_input}\n"
+              @board[@review_input - 1] = @player_char[@i]
+              disply_board
+              @temp = @review_input.to_s
+            end
             @temp
           elsif @reviewer
             disply_board
             print "Invalid input !\n\n"
             print "#{@current_player}, please choose again. "
             @review_input = gets.chomp.to_i
-            @temp = @review_input.to_s if  @tic_tac_toe.analize_input?(@review_input) == false
+            @temp = @review_input.to_s if @tic_tac_toe.analize_input?(@review_input) == false
             check_input(@temp, @current_player)
           end
         end
       else
-        print "\n#{@current_player}, the '#{ @player_char[@i]}' player has chosen spot ##{@test2}\n"
+        print "\n#{@current_player}, the '#{@player_char[@i]}' player has chosen spot ##{@test2}\n"
         @board[@test2 - 1] = @player_char[@i]
         disply_board
       end
-    elsif  @tic_tac_toe.analize_input?(input_user)
+    elsif @tic_tac_toe.analize_input?(input_user)
       disply_board
       print "Invalid input !\n\n"
       print "#{@current_player}, choose a position from (1-9) to place in the board: "
