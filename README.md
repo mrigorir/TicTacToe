@@ -35,7 +35,7 @@ Setup by following the installation instructions below :
  git clone git@github.com:mrigorir/TicTacToe.git
 
 * Run
- On your terminal, type bin/main.rb
+ On your terminal, type bin/main
 
 ### Install
 
@@ -50,7 +50,7 @@ git clone git@github.com:mrigorir/TicTacToe.git
 Run the following command into your terminal:
 
 ```console
-ruby bin/main.rb
+ruby bin/main
 ```
 ## Tic Tac Toe's rules
 
