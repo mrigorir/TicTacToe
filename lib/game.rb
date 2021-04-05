@@ -96,7 +96,7 @@ class Game
             print "#{@current_player}, please choose again. "
             @review_input = gets.chomp.to_i
             @temp = @review_input.to_s if @tic_tac_toe.analize_input?(@review_input) == false
-            check_input(@current_player, j)
+            check_input(@current_player, @j, @state)
           end
         end
       else
