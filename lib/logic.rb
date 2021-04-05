@@ -30,7 +30,7 @@ class TicTacToe
 
   def analize_input?(input)
     @input = input
-    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.negative? || @input > 9 || @input.zero? || @input == '0'
+    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.empty? || @input.negative? || @input > 9 || @input.zero? || @input == '0'
       return true
     end
 
