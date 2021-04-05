@@ -101,8 +101,6 @@ class Game
     elsif @tic_tac_toe.analize_input?(@input_user)
       disply_board
       print "Invalid input !\n\n"
-      print "#{@current_player}, choose a position from (1-9) to place in the board: "
-      @temp = gets.chomp
       check_input(@current_player, @j, @state)
     end
     @input_user
