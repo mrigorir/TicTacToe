@@ -41,11 +41,11 @@ cd TicTacToe/
 ```
 Then if you are running a unix machine type direclty main to run the program
 ````
-main
+bin/main
 ````
 or 
 ```
-ruby main
+ruby bin/main
 ```
 if you are on Windows.
 

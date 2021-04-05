@@ -61,14 +61,3 @@ class TicTacToe
     return '' if @county <= 9
   end
 end
-
-private
-
-class Player
-  attr_accessor :name, :token
-
-  def initialize(name, token)
-    @name = name
-    @token = token
-  end
-end
