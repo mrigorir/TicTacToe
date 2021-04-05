@@ -91,9 +91,14 @@ def global(player_char, temp)
           temp
         end
         taken_result = tic_tac_toe.taken?(temp, usedd)
-        while taken_result
+        while taken_result && temp
           print "Splot Already taken.\n"
           temp = GameMethods.check_input(players[j])
+          until temp
+            print "Invalid input !\n "
+            temp = GameMethods.check_input(players[j])
+            temp
+          end
           taken_result = tic_tac_toe.taken?(temp, usedd)
           taken_result
         end
