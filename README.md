@@ -1,67 +1,59 @@
 # Tic_tac_toe_game
 
 
-> This is a collaborative project to reproduce the Tic Tac Toe game in console with Ruby language.
+> This is a collaborative project to reproduce the Tic Tac Toe game in console with Ruby language by respecting the OOP concept.
 
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+Let us guide you through how you can get our repository in your local machine.
 
 ### Prerequisites
+- First, you need to make sure you hava a text editor already installed in your machine. We used Vscode if you don't have anyone you can download it for free.
+- Second most important is to make sure you've Ruby installed in your machine. type this in your terminal to make sure you are alright.
 
-1. VSCode
-
-2. Terminal (Bash)
-
-3. Linter tests
-
-4. Git
-
-5. Ruby
+```console
+ruby -v
+```
 
 ### Setup
 
-Setup by following the installation instructions below :
+Know we are sure you have the minimum requirements, you can follow those instructions to get our reposiroty :
 
-* Open your terminal and locate on the folder you want to clone the repository.
+* Open your terminal and locate yourself on the folder you want to clone the repository by using the command cd.
 
 * Setup
- Create a new folder/directory for the project.
- Be sure to have a Github account and that this account is connected locally on your PC.
+
+Create a new folder/directory for the project.
+Be sure to have a Github account and that this account is connected locally on your PC.
 
 * Install
- Go to the desired directory on your terminal
- git clone git@github.com:mrigorir/TicTacToe.git
 
-* Run
-<<<<<<< HEAD
+  the desired directory on your terminal
+  ```
+  git clone git@github.com:mrigorir/TicTacToe.git
+  ```
 
- On your terminal, type: cd bin.
+* Move to the repository cloned
 
- Then, type ruby main so the game can begin.
-=======
- On your terminal, type bin/main
->>>>>>> d3e26c2a52c1b79adf221c4932014968778fd771
-
-### Install
-
-Run the following command into your terminal:
-
-```console
-git clone git@github.com:mrigorir/TicTacToe.git
 ```
-
-### Usage
-
-Run the following command into your terminal:
-
-```console
-ruby bin/main
+cd TicTacToe/
 ```
+Then if you are running a unix machine type direclty main to run the program
+````
+main
+````
+or 
+```
+ruby main
+```
+if you are on Windows.
+
 ## Tic Tac Toe's rules
 
-- The game start with both player choosing their names.
+![screenshot](./tictactoe.gif)
+
+- The game starts with both player choosing their pseudo.
 - Player 1 is playing as 'X', while player 2 plays as 'O'
 - The game starts with player 1 choosing an available cell in the board and then player 2 choosing an available cell in the board
 - A player wins by getting 3 cells marked with their letter, either horizontally, vertically or diagonally
@@ -74,7 +66,7 @@ ruby bin/main
 
 - GitHub: [Anvi98](https://github.com/Anvi98)
 - Twitter: [@anvi_al](https://twitter.com/anvi_al)
-- LinkedIn: [@nsabimana-emmanuel-4276091b2](https://www.linkedin.com/in/anvi-alex-eponon/)
+- LinkedIn: [Anvi Alex](https://www.linkedin.com/in/anvi-alex-eponon/)
 
 👤 **Marco Para**
 
@@ -99,4 +91,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
