@@ -66,15 +66,6 @@ if you are on Windows.
 
 - GitHub: [Anvi98](https://github.com/Anvi98)
 - Twitter: [@anvi_al](https://twitter.com/anvi_al)
-<<<<<<< HEAD
-- LinkedIn: [Anvi Alex](https://www.linkedin.com/in/anvi-alex-eponon/)
-
-👤 **Marco Para**
-
-- GitHub: [@mrigorir](https://github.com/mrigorir)
-- Twitter: [@marcoparra311](https://twitter.com/marcoparra311)
-- LinkedIn: [Marco Parra](https://linkedin.com/in/marco-alonso-parra/)
-=======
 - LinkedIn: [@anvi98](https://www.linkedin.com/in/anvi-alex-eponon/)
 
 👤 **Marco Para**
@@ -82,7 +73,6 @@ if you are on Windows.
 - GitHub: [mrigorir](https://github.com/mrigorir)
 - Twitter: [@Marco](https://twitter.com/marcoparra311)
 - LinkedIn: [Marco](https://www.linkedin.com/in/marco-alonso-parra/)
->>>>>>> 94a1312fd378bdf1b787aa0e0e81da4ce27e2a8e
 
 ## 🤝 Contributing
 
@@ -101,8 +91,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-<<<<<<< HEAD
 This project is [MIT](./LICENSE) licensed.
-=======
-This project is [MIT](./MIT.md) licensed.
->>>>>>> 94a1312fd378bdf1b787aa0e0e81da4ce27e2a8e
