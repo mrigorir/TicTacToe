@@ -26,6 +26,13 @@ module GameMethods
     puts "\n"
   end
 
+  def self.actual_board(input_user, board, player_char, player)
+    current_player = player
+    print "\n#{current_player}, the '#{player_char}' player has chosen spot ##{input_user}\n"
+    board[input_user - 1] = player_char
+    disply_board(board)
+  end
+
   def self.create_players(player_char, players, tic_tac_toe)
     i = 0
     while i < 2
@@ -45,69 +52,28 @@ module GameMethods
     players
   end
 
-  def self.check_input(player, iteration, state, board, tic_tac_toe, usedd, player_char)
-    j = iteration
-    state = state
+  def self.check_input(player)
     print "#{player}, choose a position from (1-9) to place in the board: "
     temp = gets.chomp
-    input_user = temp
-    current_player = player
-    if input_user =~ /[1-9]/ && input_user.to_i.between?(1, 9) && input_user.to_i <= board.length
-      test2 = input_user.to_i
-      test3 = tic_tac_toe.taken?(test2, usedd) ## => Boolean
-      if test3
-        while test3
-          disply_board(board)
-          print "#{current_player}, that spot is not available, please choose another one: "
-          review_input = gets.chomp.to_i
-          reviewer = tic_tac_toe.analize_input?(review_input)
-          if reviewer == false
-            test3 = tic_tac_toe.taken?(review_input, usedd)
-            if test3 == false
-              print "\n#{current_player}, the '#{player_char[j]}' player has chosen spot ##{review_input}\n"
-              board[review_input - 1] = player_char[j]
-              disply_board(board)
-              temp = review_input.to_s
-            end
-            temp
-          elsif reviewer
-            disply_board(board)
-            print "Invalid input !\n\n"
-            check_input(current_player, j, state, board, tic_tac_toe, usedd, player_char)
-          end
-        end
-      else
-        print "\n#{current_player}, the '#{player_char[j]}' player has chosen spot ##{test2}\n"
-        board[test2 - 1] = player_char[j]
-        disply_board(board)
-      end
-    elsif tic_tac_toe.analize_input?(input_user)
-      disply_board(board)
-      print "Invalid input !\n\n"
-      check_input(current_player, j, state, board, tic_tac_toe, usedd, player_char)
+    if temp =~ /[1-9]/ && temp.to_i.between?(1, 9)
+      input_user = temp.to_i
+      input_user
+    else
+      false
     end
-    input_user
   end
 end
 
 # ------ End ------------- #
 
-def global
+def global(player_char, temp)
   board = %w[1 2 3 4 5 6 7 8 9]
-  player_char = %w[X O]
-  game = true
   players = []
-  temp = ''
-  locations = []
-  loc = ''
   usedd = []
-  move = 0
   tic_tac_toe = TicTacToe.new
-  arb_i = 0
   indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
-  player_char = %w[X O]
   county = 1
-  state = ''
+  state = true
   system('clear') || system('cls')
   puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
@@ -118,7 +84,20 @@ def global
     j = 0
     while j < 2
       if state != false
-        temp = GameMethods.check_input(players[j], j, state, board, tic_tac_toe, usedd, player_char)
+        temp = GameMethods.check_input(players[j])
+        until temp
+          print "Invalid input !\n "
+          temp = GameMethods.check_input(players[j])
+          temp
+        end
+        taken_result = tic_tac_toe.taken?(temp, usedd)
+        while taken_result
+          print "Splot Already taken.\n"
+          temp = GameMethods.check_input(players[j])
+          taken_result = tic_tac_toe.taken?(temp, usedd)
+          taken_result
+        end
+        GameMethods.actual_board(temp, board, player_char[j], players[j])
         state = tic_tac_toe.arbiter(temp, player_char[j], players[j], indexes_win)
         county += 1
       end
@@ -134,7 +113,11 @@ def global
   p tic_tac_toe.state
 end
 
-global
+player_char = %w[X O]
+temp = ''
+
+global(player_char, temp)
+
 puts "\n Game over!"
 
 print " \n Do you want do play again? (Y/N): "
@@ -143,7 +126,7 @@ inside = true if choice.include?('Y')
 while inside
   system('clear') || system('cls')
   puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
-  global
+  global(player_char, temp)
   print " \n Do you want do play again? (Y/N): "
   choice = gets.chomp
   break if choice != 'Y'

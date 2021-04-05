@@ -6,11 +6,6 @@ class TicTacToe
     @county = 1
   end
 
-  def check_input(_array, _player_char, player, _loc, usedd)
-    @player = player
-    @usedd = usedd
-  end
-
   def taken?(pos, array)
     @pos = pos
     @board = array
@@ -29,9 +24,7 @@ class TicTacToe
 
   def analize_input?(input)
     @input = input
-    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.to_s.empty? || @input == '0' || @input.to_i.negative?
-      return true
-    end
+    return true if @input =~ /[1-9]/ && @input.to_i.between?(1, 9)
 
     false
   end
