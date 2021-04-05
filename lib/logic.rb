@@ -1,5 +1,4 @@
 class TicTacToe
-  attr_accessor :player
   attr_reader :board, :game, :player_char, :loc, :move, :state, :token
 
   def initialize
@@ -30,7 +29,7 @@ class TicTacToe
 
   def analize_input?(input)
     @input = input
-    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.empty? || @input.negative? || @input > 9 || @input.zero? || @input == '0'
+    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.empty? || @input == '0'
       return true
     end
 
@@ -62,8 +61,6 @@ class TicTacToe
     return '' if @county <= 9
 
     return '' if @county <= 9
-
-    ''
   end
 end
 
