@@ -1,9 +1,8 @@
 class TicTacToe
-  attr_accessor :token, :player
-  attr_reader :board, :game, :player_char, :loc, :move, :winner
+  attr_accessor :player
+  attr_reader :board, :game, :player_char, :loc, :move, :state, :token
 
   def initialize
-    @indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
     @winner = ''
     @county = 1
   end
@@ -29,29 +28,38 @@ class TicTacToe
     false
   end
 
-  def arbiter(array, user_input, player_char, playername)
-    @array = array
+  def analize_input?(input)
+    @input = input
+    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.negative? || @input > 9 || @input.zero? || @input == '0'
+      return true
+    end
+
+    false
+  end
+
+  def arbiter(temp, player_char, players, wining)
     @player_char = player_char
-    @user_input = user_input
-    @playername = playername
+    @user_input = temp
+    @playername = players
+    @indexes_win = wining
     @indexes_win.each do |sub_array|
-      sub_array.map.with_index do |el, i|
-        sub_array[i] = @player_char if el == @user_input.to_i
-        sub_array
+      sub_array.map.with_index do |el, index|
+        sub_array[index] = @player_char if el == @user_input.to_i
+        sub_array[index]
       end
-      if sub_array.all?('X') && @county < 9
-        @winner = "#{@playername} wins the game. Congrats!"
-        return 'win'
-      elsif sub_array.all?('O') && @county < 9
-        @winner = "#{@playername} wins the game. Congrats!"
-        return 'win'
-      end
+      next unless sub_array.all?('X') && @county <= 9 || sub_array.all?('O') && @county <= 9
+
+      p @state = "#{@playername} wins the game. Congrats!"
+      @game = false
+      return @game
     end
     if @county == 9
-      puts "It's a TIE !\n"
-      return 'tie'
+      p @state = 'It\'s a TIE. Good luck next time!'
+      @game = false
+      return @game
     end
     @county += 1
+    return '' if @county <= 9
 
     return '' if @county <= 9
 
