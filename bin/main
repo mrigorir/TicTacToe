@@ -22,7 +22,7 @@ def global
         county += 1
       end
       if county == 9
-        p state
+        p game.tic_tac_toe.state
         break
       end
       j += 1
@@ -30,9 +30,11 @@ def global
     i += 1
     break if county == 9 && state == false
   end
+  p game.tic_tac_toe.state
 end
 
 global
+
 
 puts "\n Game over!"
 

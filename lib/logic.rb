@@ -49,12 +49,12 @@ class TicTacToe
       end
       next unless sub_array.all?('X') && @county <= 9 || sub_array.all?('O') && @county <= 9
 
-      p @state = "#{@playername} wins the game. Congrats!"
+      @state = "#{@playername} wins the game. Congrats!"
       @game = false
       return @game
     end
     if @county == 9
-      p @state = 'It\'s a TIE. Good luck next time!'
+      @state = 'It\'s a TIE. Good luck next time!'
       @game = false
       return @game
     end
