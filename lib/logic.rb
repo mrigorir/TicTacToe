@@ -61,6 +61,8 @@ class TicTacToe
     @county += 1
     return '' if @county <= 9
 
+    return '' if @county <= 9
+
     ''
   end
 end

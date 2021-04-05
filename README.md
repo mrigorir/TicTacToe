@@ -22,7 +22,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Setup
 
-Setup by  following the installation instructions below :
+Setup by following the installation instructions below :
 
 * Open your terminal and locate on the folder you want to clone the repository.
 
@@ -35,10 +35,14 @@ Setup by  following the installation instructions below :
  git clone git@github.com:mrigorir/TicTacToe.git
 
 * Run
+<<<<<<< HEAD
 
  On your terminal, type: cd bin.
 
  Then, type ruby main so the game can begin.
+=======
+ On your terminal, type bin/main
+>>>>>>> d3e26c2a52c1b79adf221c4932014968778fd771
 
 ### Install
 
@@ -55,6 +59,14 @@ Run the following command into your terminal:
 ```console
 ruby bin/main
 ```
+## Tic Tac Toe's rules
+
+- The game start with both player choosing their names.
+- Player 1 is playing as 'X', while player 2 plays as 'O'
+- The game starts with player 1 choosing an available cell in the board and then player 2 choosing an available cell in the board
+- A player wins by getting 3 cells marked with their letter, either horizontally, vertically or diagonally
+- If none of the players is able to win before the board runs out of available squares it's declared a draw.
+- Enjoy
 
 ## Authors
 
@@ -66,9 +78,9 @@ ruby bin/main
 
 👤 **Marco Para**
 
-- GitHub: [mrigorir](#)
-- Twitter: [@Marco](#)
-- LinkedIn: [Marco](#)
+- GitHub: [@mrigorir](https://github.com/mrigorir)
+- Twitter: [@marcoparra311](https://twitter.com/marcoparra311)
+- LinkedIn: [Marco Parra](https://linkedin.com/in/marco-alonso-parra/)
 
 ## 🤝 Contributing
 

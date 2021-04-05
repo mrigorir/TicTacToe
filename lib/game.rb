@@ -59,12 +59,6 @@ class Game
     @players
   end
 
-  # def take_input(wining)
-  #   @wining = wining
-  #   @temp = gets.chomp
-  #   @temp
-  # end
-
   def check_input(player, iteration, state)
     @j = iteration
     @state = state
