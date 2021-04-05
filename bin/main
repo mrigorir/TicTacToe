@@ -129,7 +129,7 @@ def global
         state = game.tic_tac_toe.arbiter(temp, player_char[j], players[j], indexes_win)
         county += 1
       end
-      if county == 9
+      if county == 9 && !game.tic_tac_toe.state.nil?
         p game.tic_tac_toe.state
         break
       end
