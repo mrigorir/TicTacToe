@@ -111,5 +111,5 @@ describe GameMethods do
         expect(GameMethods.check_input('Marco')).to be false
       end
     end
-  end 
+  end
 end
