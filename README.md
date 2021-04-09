@@ -22,8 +22,6 @@ Know we are sure you have the minimum requirements, you can follow those instruc
 
 * Open your terminal and locate yourself on the folder you want to clone the repository by using the command cd.
 
-* Setup
-
 Create a new folder/directory for the project.
 Be sure to have a Github account and that this account is connected locally on your PC.
 
@@ -67,6 +65,8 @@ To run tests, go to the root folder and run:
 `rspec`
 
 You will see all of the test either passing or failing.
+
+to run them and see the results.
 
 ## Authors
 
