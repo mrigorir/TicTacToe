@@ -97,19 +97,3 @@ RSpec.describe TicTacToe do
     end
   end
 end
-
-describe GameMethods do
-  describe '#check_input' do
-    context 'whne input is between 1 and 9' do
-      it 'returns true' do
-        expect(GameMethods.check_input('Marco')).to be true
-      end
-    end
-
-    context 'when input is NOT between 1 and 9' do
-      it 'returns false' do
-        expect(GameMethods.check_input('Marco')).to be false
-      end
-    end
-  end
-end
