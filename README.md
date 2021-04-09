@@ -66,7 +66,7 @@ To run tests, go to the root folder and run:
 
 You will see all of the test either passing or failing.
 
-to run them and see the results.
+Run them and see the results.
 
 ## Authors
 
