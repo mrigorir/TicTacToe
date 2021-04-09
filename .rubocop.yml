@@ -57,11 +57,3 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-Lint/DuplicateBranch:
-  Enabled: false
->>>>>>> d3e26c2a52c1b79adf221c4932014968778fd771
-=======
->>>>>>> 0780f5b81f86f0a7eb732cd9c2bd79e5180f5ee8
