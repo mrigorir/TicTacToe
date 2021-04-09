@@ -1,28 +1,50 @@
 #!/usr/bin/env ruby
 require_relative '../lib/logic'
-require_relative '../lib/game'
-def global
-  game = Game.new
+require_relative '../lib/players'
+require_relative '../lib/modules'
+
+def global(player_char, temp)
+  board = %w[1 2 3 4 5 6 7 8 9]
+  players = []
+  usedd = []
+  tic_tac_toe = TicTacToe.new
   indexes_win = [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]]
-  player_char = %w[X O]
   county = 1
-  state = ''
+  state = true
   system('clear') || system('cls')
   puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
 
-  players = game.create_players
-  game.gaming(players)
+  players = GameMethods.create_players(player_char, players, tic_tac_toe)
+  GameMethods.gaming(players, board)
   i = 0
   while i < 9
     j = 0
     while j < 2
       if state != false
-        temp = game.check_input(players[j], j, state)
-        state = game.tic_tac_toe.arbiter(temp, player_char[j], players[j], indexes_win)
+        temp = GameMethods.check_input(players[j])
+        until temp
+          print "Invalid input !\n "
+          temp = GameMethods.check_input(players[j])
+          temp
+        end
+        taken_result = tic_tac_toe.taken?(temp, usedd)
+        while taken_result && temp
+          print "Spot already taken.\n"
+          temp = GameMethods.check_input(players[j])
+          until temp
+            print "Invalid input !\n "
+            temp = GameMethods.check_input(players[j])
+            temp
+          end
+          taken_result = tic_tac_toe.taken?(temp, usedd)
+          taken_result
+        end
+        GameMethods.actual_board(temp, board, player_char[j], players[j])
+        state = tic_tac_toe.arbiter(temp, player_char[j], players[j], indexes_win)
         county += 1
       end
-      if county == 9
-        p game.tic_tac_toe.state
+      if county == 9 && !tic_tac_toe.state.nil?
+        p tic_tac_toe.state
         break
       end
       j += 1
@@ -30,24 +52,26 @@ def global
     i += 1
     break if county == 9 && state == false
   end
-  p game.tic_tac_toe.state
+  p tic_tac_toe.state
 end
 
-global
+player_char = %w[X O]
+temp = ''
 
+global(player_char, temp)
 
 puts "\n Game over!"
 
 print " \n Do you want do play again? (Y/N): "
 choice = gets.chomp
-inside = true if choice == 'Y'
+inside = true if choice.include?('Y')
 while inside
   system('clear') || system('cls')
   puts "Welcome to our amazing Tic Tac Toe !!\n\n\n"
-  global
+  global(player_char, temp)
   print " \n Do you want do play again? (Y/N): "
   choice = gets.chomp
-  break if choice != 'Y' || choice != 'y'
+  break if choice != 'Y'
 end
 
 puts 'Good Bye'

@@ -1,15 +1,11 @@
+require_relative './modules'
+
 class TicTacToe
-  attr_accessor :player
   attr_reader :board, :game, :player_char, :loc, :move, :state, :token
 
   def initialize
     @winner = ''
     @county = 1
-  end
-
-  def check_input(_array, _player_char, player, _loc, usedd)
-    @player = player
-    @usedd = usedd
   end
 
   def taken?(pos, array)
@@ -30,16 +26,14 @@ class TicTacToe
 
   def analize_input?(input)
     @input = input
-    if @input =~ /[a-zA-z0-9]/ || @input.nil? || @input.empty? || @input.negative? || @input > 9 || @input.zero? || @input == '0'
-      return true
-    end
+    return true if @input =~ /[1-9]/ && @input.to_i.between?(1, 9)
 
     false
   end
 
   def arbiter(temp, player_char, players, wining)
-    @player_char = player_char
     @user_input = temp
+    @player_char = player_char
     @playername = players
     @indexes_win = wining
     @indexes_win.each do |sub_array|
@@ -60,20 +54,5 @@ class TicTacToe
     end
     @county += 1
     return '' if @county <= 9
-
-    return '' if @county <= 9
-
-    ''
-  end
-end
-
-private
-
-class Player
-  attr_accessor :name, :token
-
-  def initialize(name, token)
-    @name = name
-    @token = token
   end
 end

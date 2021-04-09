@@ -24,10 +24,15 @@ Know we are sure you have the minimum requirements, you can follow those instruc
 
 * Setup
 
+<<<<<<< HEAD
+* Run
+ On your terminal, type bin/main
+=======
 Create a new folder/directory for the project.
 Be sure to have a Github account and that this account is connected locally on your PC.
 
 * Install
+>>>>>>> 0780f5b81f86f0a7eb732cd9c2bd79e5180f5ee8
 
   the desired directory on your terminal
   ```
@@ -41,11 +46,11 @@ cd TicTacToe/
 ```
 Then if you are running a unix machine type direclty main to run the program
 ````
-main
+bin/main
 ````
 or 
 ```
-ruby main
+ruby bin/main
 ```
 if you are on Windows.
 
@@ -66,15 +71,6 @@ if you are on Windows.
 
 - GitHub: [Anvi98](https://github.com/Anvi98)
 - Twitter: [@anvi_al](https://twitter.com/anvi_al)
-<<<<<<< HEAD
-- LinkedIn: [Anvi Alex](https://www.linkedin.com/in/anvi-alex-eponon/)
-
-👤 **Marco Para**
-
-- GitHub: [@mrigorir](https://github.com/mrigorir)
-- Twitter: [@marcoparra311](https://twitter.com/marcoparra311)
-- LinkedIn: [Marco Parra](https://linkedin.com/in/marco-alonso-parra/)
-=======
 - LinkedIn: [@anvi98](https://www.linkedin.com/in/anvi-alex-eponon/)
 
 👤 **Marco Para**
@@ -82,7 +78,6 @@ if you are on Windows.
 - GitHub: [mrigorir](https://github.com/mrigorir)
 - Twitter: [@Marco](https://twitter.com/marcoparra311)
 - LinkedIn: [Marco](https://www.linkedin.com/in/marco-alonso-parra/)
->>>>>>> 94a1312fd378bdf1b787aa0e0e81da4ce27e2a8e
 
 ## 🤝 Contributing
 
@@ -101,8 +96,4 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-<<<<<<< HEAD
 This project is [MIT](./LICENSE) licensed.
-=======
-This project is [MIT](./MIT.md) licensed.
->>>>>>> 94a1312fd378bdf1b787aa0e0e81da4ce27e2a8e
