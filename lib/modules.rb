@@ -51,7 +51,7 @@ module GameMethods
     print "#{player}, choose a position from (1-9) to place in the board: "
     temp = gets.chomp
     if temp =~ /[1-9]/ && temp.to_i.between?(1, 9)
-      input_user = temp.to_i
+      temp.to_i
     else
       false
     end
