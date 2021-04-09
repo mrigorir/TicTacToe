@@ -1,6 +1,5 @@
 module GameMethods
   def self.gaming(players, board)
-    players = players
     puts "#{players[0]} is going to play with X\n"
     puts "#{players[1]} is going to play with O\n\n"
     puts "Great ! #{players[0]} and #{players[1]} let start the battle !!\n\n\n"
@@ -52,8 +51,7 @@ module GameMethods
     print "#{player}, choose a position from (1-9) to place in the board: "
     temp = gets.chomp
     if temp =~ /[1-9]/ && temp.to_i.between?(1, 9)
-      input_user = temp.to_i
-      input_user
+      temp.to_i
     else
       false
     end
