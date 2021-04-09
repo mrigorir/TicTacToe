@@ -52,6 +52,7 @@ module GameMethods
     temp = gets.chomp
     if temp =~ /[1-9]/ && temp.to_i.between?(1, 9)
       temp.to_i
+      true
     else
       false
     end

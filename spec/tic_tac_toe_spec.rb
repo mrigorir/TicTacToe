@@ -99,15 +99,17 @@ RSpec.describe TicTacToe do
 end
 
 describe GameMethods do
-  context 'check the input matches the RegExp pattern, then' do
-    it 'returns false' do
-      expect(GameMethods.check_input('Marco')).to eql(4)
+  describe '#check_input' do
+    context 'whne input is between 1 and 9' do
+      it 'returns true' do
+        expect(GameMethods.check_input('Marco')).to be true
+      end
     end
-  end
 
-  context 'if the input does not matches the patter, then' do
-    it 'returns false' do
-      expect(GameMethods.check_input('Alex')).to be false
+    context 'when input is NOT between 1 and 9' do
+      it 'returns false' do
+        expect(GameMethods.check_input('Marco')).to be false
+      end
     end
-  end
+  end  
 end

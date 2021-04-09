@@ -24,15 +24,10 @@ Know we are sure you have the minimum requirements, you can follow those instruc
 
 * Setup
 
-<<<<<<< HEAD
-* Run
- On your terminal, type bin/main
-=======
 Create a new folder/directory for the project.
 Be sure to have a Github account and that this account is connected locally on your PC.
 
 * Install
->>>>>>> 0780f5b81f86f0a7eb732cd9c2bd79e5180f5ee8
 
   the desired directory on your terminal
   ```
@@ -64,6 +59,14 @@ if you are on Windows.
 - A player wins by getting 3 cells marked with their letter, either horizontally, vertically or diagonally
 - If none of the players is able to win before the board runs out of available squares it's declared a draw.
 - Enjoy
+
+### Run tests
+
+To run tests, go to the root folder and run: 
+
+`rspec`
+
+You will see all of the test either passing or failing.
 
 ## Authors
 
