@@ -11,7 +11,7 @@ RSpec.describe TicTacToe do
         expect(game.taken?(1, [1, 2, 4])).to be true
       end
     end
-    
+
     context 'position has not been taken?' do
       it 'returns false if position\'s not taken' do
         expect(game.taken?(5, [1, 7, 8, 9])).to be false
@@ -26,7 +26,7 @@ RSpec.describe TicTacToe do
 
     context 'position empty?' do
       it 'returns false' do
-        expect(game.taken?("", [])).to be false
+        expect(game.taken?('', [])).to be false
       end
     end
   end
@@ -92,7 +92,7 @@ RSpec.describe TicTacToe do
 
     context 'checks for a TIE' do
       it 'returns empty if none of the players wins' do
-        expect(game.arbiter(7, 'O', 'Anvi', [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]])).to eql("")
+        expect(game.arbiter(7, 'O', 'Anvi', [[1, 5, 9], [1, 2, 3], [1, 4, 7], [2, 5, 8], [3, 5, 7], [3, 6, 9], [4, 5, 6], [7, 8, 9]])).to eql('')
       end
     end
   end
@@ -107,7 +107,7 @@ describe GameMethods do
 
   context 'if the input does not matches the patter, then' do
     it 'returns false' do
-      expect(GameMethods.check_input('Alex')).to be false 
+      expect(GameMethods.check_input('Alex')).to be false
     end
   end
 end
