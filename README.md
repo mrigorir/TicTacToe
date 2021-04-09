@@ -23,16 +23,14 @@ Know we are sure you have the minimum requirements, you can follow those instruc
 * Open your terminal and locate yourself on the folder you want to clone the repository by using the command cd.
 
 * Setup
-
-<<<<<<< HEAD
+* 
 * Run
  On your terminal, type bin/main
-=======
+ 
 Create a new folder/directory for the project.
 Be sure to have a Github account and that this account is connected locally on your PC.
 
 * Install
->>>>>>> 0780f5b81f86f0a7eb732cd9c2bd79e5180f5ee8
 
   the desired directory on your terminal
   ```
