@@ -63,12 +63,6 @@ if you are on Windows.
 - If none of the players is able to win before the board runs out of available squares it's declared a draw.
 - Enjoy
 
-### Run tests
-
-To run tests, go to the root folder and run: 
-
-`rspec`
-
 to run them and see the results.
 
 ## Authors
