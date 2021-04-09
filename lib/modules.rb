@@ -59,4 +59,3 @@ module GameMethods
     end
   end
 end
-
