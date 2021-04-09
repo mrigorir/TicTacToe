@@ -1,3 +1,5 @@
+require_relative './modules'
+
 class TicTacToe
   attr_reader :board, :game, :player_char, :loc, :move, :state, :token
 
@@ -30,8 +32,8 @@ class TicTacToe
   end
 
   def arbiter(temp, player_char, players, wining)
-    @player_char = player_char
     @user_input = temp
+    @player_char = player_char
     @playername = players
     @indexes_win = wining
     @indexes_win.each do |sub_array|
